@@ -72,15 +72,21 @@
     </plugins>
   </build>
   <dependencies/>
-  <properties>
-    <reuseForks>false</reuseForks>
-  </properties>
   <distributionManagement>
+	<repository>
+        <id>central</id>
+        <name>rsonwane-t430-releases</name>
+        <url>http://localhost:8081/artifactory/libs-release-local</url>
+    </repository>
     <snapshotRepository>
         <id>snapshots</id>
         <name>rsonwane-t430-snapshots</name>
         <url>http://localhost:8081/artifactory/libs-snapshot-local</url>
     </snapshotRepository>
 </distributionManagement>
+  <properties>
+    <reuseForks>false</reuseForks>
+  </properties>
+  
 </project>
 
