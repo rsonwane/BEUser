@@ -75,5 +75,12 @@
   <properties>
     <reuseForks>false</reuseForks>
   </properties>
+  <distributionManagement>
+    <snapshotRepository>
+        <id>snapshots</id>
+        <name>rsonwane-t430-snapshots</name>
+        <url>http://localhost:8081/artifactory/libs-snapshot-local</url>
+    </snapshotRepository>
+</distributionManagement>
 </project>
 
