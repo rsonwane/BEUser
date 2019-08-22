@@ -72,9 +72,6 @@
     </plugins>
   </build>
   <dependencies/>
-  <properties>
-    <reuseForks>false</reuseForks>
-  </properties>
   <distributionManagement>
     <snapshotRepository>
         <id>snapshots</id>
@@ -82,5 +79,8 @@
         <url>http://localhost:8081/artifactory/libs-snapshot-local</url>
     </snapshotRepository>
 </distributionManagement>
+  <properties>
+    <reuseForks>false</reuseForks>
+  </properties>
 </project>
 
