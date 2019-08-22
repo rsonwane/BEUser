@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<element:Concept xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:designtime="http:///com/tibco/cep/designtime/core/model/designtime_ontology.ecore" xmlns:element="http:///com/tibco/cep/designtime/core/model/element" namespace="/Concepts/" folder="/Concepts/" name="Customer" description="" GUID="F21D9531-D0A4-E54B-7740-862508B0D7E4" ownerProjectName="BEUser">
+  <extendedProperties>
+    <properties xsi:type="designtime:SimpleProperty" name="SCHEMA_NAME" value="SYSTEM"/>
+    <properties xsi:type="designtime:SimpleProperty" name="OBJECT_NAME" value="CUSTACCOUNT"/>
+    <properties xsi:type="designtime:SimpleProperty" name="OBJECT_TYPE" value="T"/>
+    <properties xsi:type="designtime:SimpleProperty" name="PRIMARY_KEY_PROPS" value="[ACCOUNTID]"/>
+    <properties xsi:type="designtime:SimpleProperty" name="JDBC_RESOURCE" value="/SharedResources/JDBCconnection.sharedjdbc"/>
+  </extendedProperties>
+  <properties name="ACCOUNTID" ownerProjectName="BEUser" ownerPath="/Concepts/Customer">
+    <extendedProperties>
+      <properties xsi:type="designtime:SimpleProperty" name="COLUMN_NAME" value="ACCOUNTID"/>
+      <properties xsi:type="designtime:SimpleProperty" name="DATA_TYPE" value="VARCHAR2"/>
+      <properties xsi:type="designtime:SimpleProperty" name="LENGTH" value="20"/>
+      <properties xsi:type="designtime:SimpleProperty" name="PRECISION" value="20"/>
+    </extendedProperties>
+  </properties>
+  <properties name="ACCOUNTSTATUS" ownerProjectName="BEUser" ownerPath="/Concepts/Customer">
+    <extendedProperties>
+      <properties xsi:type="designtime:SimpleProperty" name="COLUMN_NAME" value="ACCOUNTSTATUS"/>
+      <properties xsi:type="designtime:SimpleProperty" name="DATA_TYPE" value="VARCHAR2"/>
+      <properties xsi:type="designtime:SimpleProperty" name="LENGTH" value="20"/>
+      <properties xsi:type="designtime:SimpleProperty" name="PRECISION" value="20"/>
+    </extendedProperties>
+  </properties>
+  <properties name="ACCOUNTLEVEL" ownerProjectName="BEUser" ownerPath="/Concepts/Customer">
+    <extendedProperties>
+      <properties xsi:type="designtime:SimpleProperty" name="COLUMN_NAME" value="ACCOUNTLEVEL"/>
+      <properties xsi:type="designtime:SimpleProperty" name="DATA_TYPE" value="VARCHAR2"/>
+      <properties xsi:type="designtime:SimpleProperty" name="LENGTH" value="20"/>
+      <properties xsi:type="designtime:SimpleProperty" name="PRECISION" value="20"/>
+    </extendedProperties>
+  </properties>
+  <properties name="TOTALPOINTS" ownerProjectName="BEUser" type="long" ownerPath="/Concepts/Customer">
+    <extendedProperties>
+      <properties xsi:type="designtime:SimpleProperty" name="COLUMN_NAME" value="TOTALPOINTS"/>
+      <properties xsi:type="designtime:SimpleProperty" name="DATA_TYPE" value="NUMBER"/>
+      <properties xsi:type="designtime:SimpleProperty" name="LENGTH" value="12"/>
+      <properties xsi:type="designtime:SimpleProperty" name="PRECISION" value="12"/>
+    </extendedProperties>
+  </properties>
+  <properties name="SHIPTOSTATE" ownerProjectName="BEUser" ownerPath="/Concepts/Customer" historyPolicy="1" historySize="5">
+    <extendedProperties>
+      <properties xsi:type="designtime:SimpleProperty" name="COLUMN_NAME" value="SHIPTOSTATE"/>
+      <properties xsi:type="designtime:SimpleProperty" name="DATA_TYPE" value="VARCHAR2"/>
+      <properties xsi:type="designtime:SimpleProperty" name="LENGTH" value="20"/>
+      <properties xsi:type="designtime:SimpleProperty" name="PRECISION" value="20"/>
+    </extendedProperties>
+  </properties>
+  <properties name="DEBIT" ownerProjectName="BEUser" type="long" ownerPath="/Concepts/Customer" historyPolicy="1" historySize="5">
+    <extendedProperties>
+      <properties xsi:type="designtime:SimpleProperty" name="COLUMN_NAME" value="DEBIT"/>
+      <properties xsi:type="designtime:SimpleProperty" name="DATA_TYPE" value="NUMBER"/>
+      <properties xsi:type="designtime:SimpleProperty" name="LENGTH" value="12"/>
+      <properties xsi:type="designtime:SimpleProperty" name="PRECISION" value="12"/>
+    </extendedProperties>
+  </properties>
+</element:Concept>

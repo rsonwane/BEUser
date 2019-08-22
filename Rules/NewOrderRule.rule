@@ -1,0 +1,35 @@
+/**
+ * @description 
+ * @author rsonwane-t430
+ */
+rule Rules.NewOrderRule {
+	attribute {
+		priority = 5;
+		forwardChain = true;
+	}
+	declare {
+		
+		Concepts.OrderTxn ordertxn;
+		Concepts.Customer customer;
+	}
+	when {
+		customer.ACCOUNTID == ordertxn.CustID;
+	}
+	then {
+		Order neworder = Instance.getByExtId(ordertxn.OrderID);
+		
+		if(neworder == null){
+		neworder = Concepts.Order.Order(/*extId String */ordertxn.OrderID,/*OrderID String */ordertxn.OrderID,/*OrderAmount double */ordertxn.OrderAmount,/*OrderDateTime DateTime */ordertxn.OrderDateTime,/*OrderPriority String */ordertxn.OrderPriority,/*OrderStatus String */ordertxn.OrderStatus,/*OrderDiscountPercent int */0,/*CustID String */ordertxn.CustID,/*ShipToState String */ordertxn.ShipToState);
+		
+		System.debugOut("***** New Order Created with OrderID " + neworder.OrderID + " and Amount: " + neworder.OrderAmount);
+		Concepts.OrderCount.OrderCountTotal = Concepts.OrderCount.OrderCountTotal + 1;
+
+		System.debugOut("*** Total Order Count: " + Concepts.OrderCount.OrderCountTotal);
+		}
+		else {
+
+		System.debugOut("*** Order already exists with ID: " +neworder.OrderID);
+
+}
+	}
+}

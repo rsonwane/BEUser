@@ -1,0 +1,26 @@
+/**
+ * @description 
+ * @author rsonwane-t430
+ */
+rule Rules.SetHighPriorityRule {
+	attribute {
+		priority = 5;
+		forwardChain = true;
+	}
+	declare {
+		
+		Concepts.Customer customer;
+		Concepts.Order order;
+	}
+	when {
+		order.OrderPriority!="HIGH";
+		customer.ACCOUNTLEVEL=="PLATINUM";
+		customer.ACCOUNTID==order.CustID;
+	}
+	then {
+		if(Instance.isNew(order)){
+			order.OrderPriority="HIGH";
+			System.debugOut("Oder: "+order.OrderID+" Priority: "+order.OrderPriority);
+		}
+	}
+}

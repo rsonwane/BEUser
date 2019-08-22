@@ -1,0 +1,31 @@
+/**
+ * @description 
+ * @author rsonwane-t430
+ */
+rule Rules.DiffStateRule {
+	attribute {
+		priority = 5;
+		forwardChain = true;
+	}
+	declare {
+		
+		Concepts.Customer customer;
+	}
+	when {
+		Temporal.History.howMany(customer.SHIPTOSTATE,
+		DateTime.getTimeInMillis(DateTime.now()) - 60000,
+		DateTime.getTimeInMillis(DateTime.now()), true)>1;
+	}
+	then {
+		Integer histSize = Instance.PropertyAtom.numHistoryValues(customer.SHIPTOSTATE);
+		String currval = Instance.PropertyAtom.getStringHistoryValue(customer.SHIPTOSTATE, histSize -1 );
+		String preval = Instance.PropertyAtom.getStringHistoryValue(customer.SHIPTOSTATE, histSize -2 );
+		System.debugOut("*** Current ShipToState value: "+ currval +"***");
+		System.debugOut("*** Previous ShipToState value"+ preval+ "***");
+		if(currval!=preval){
+			customer.ACCOUNTSTATUS ="SUSPENDED";
+			Event.assertEvent(Event.createEvent("xslt://{{/Events/SuspendAccountEvent}}<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<xsl:stylesheet xmlns:xsl=\"http://www.w3.org/1999/XSL/Transform\" version=\"2.0\"><xsl:param name=\"customer\"/><xsl:template name=\"Function\" match=\"/\"><createEvent><event><xsl:if test=\"$customer/ACCOUNTID\"><CustID><xsl:value-of select=\"$customer/ACCOUNTID\"/></CustID></xsl:if><xsl:if test=\"$customer/ACCOUNTSTATUS\"><AccountStatus><xsl:value-of select=\"$customer/ACCOUNTSTATUS\"/></AccountStatus></xsl:if></event></createEvent></xsl:template></xsl:stylesheet>"));
+			System.debugOut("*** Warning ShipToState differs for Account"+ customer.ACCOUNTID +" Suspended ***");
+		}
+	}
+}

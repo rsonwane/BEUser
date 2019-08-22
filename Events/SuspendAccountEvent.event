@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<event:SimpleEvent xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:event="http:///com/tibco/cep/designtime/core/model/event" namespace="/Events/" folder="/Events/" name="SuspendAccountEvent" description="" GUID="759E4AB6-196A-4646-27CB-5A1AEF80A4B2" ownerProjectName="BEUser" superEventPath="" ttl="-1" ttlUnits="Seconds">
+  <properties name="CustID" ownerProjectName="BEUser" ownerPath="/Events/SuspendAccountEvent"/>
+  <properties name="AccountStatus" ownerProjectName="BEUser" ownerPath="/Events/SuspendAccountEvent"/>
+  <expiryAction name="SuspendAccountEvent_expiryAction" ownerProjectName="BEUser" actionText="" conditionText="">
+    <symbols>
+      <symbolList idName="suspendaccountevent" type="/Events/SuspendAccountEvent"/>
+    </symbols>
+  </expiryAction>
+</event:SimpleEvent>

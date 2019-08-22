@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+	 xmlns="http://www.tibco.com/schemas/TestSchemas/OrderSchema.xsd"
+	 targetNamespace="http://www.tibco.com/schemas/TestSchemas/OrderSchema.xsd"
+	 elementFormDefault="qualified"
+	 attributeFormDefault="unqualified">
+	<xs:element name="CustID" type="xs:string"/>
+	<xs:element name="OrderID" type="xs:string"/>
+	<xs:element name="OrderAmount" type="xs:double"/>
+	<xs:element name="OrderDateTime" type="xs:dateTime"/>
+	<xs:element name="OrderPriority" type="xs:string"/>
+	<xs:element name="OrderStatus" type="xs:string"/>
+	<xs:element name="ShipToState" type="xs:string"/>
+	<xs:element name="OrderTxn">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="OrderID"/>
+				<xs:element ref="CustID"/>
+				<xs:element ref="OrderAmount"/>
+				<xs:element ref="OrderDateTime"/>
+				<xs:element ref="OrderPriority"/>
+				<xs:element ref="OrderStatus"/>
+				<xs:element ref="ShipToState"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+</xs:schema>

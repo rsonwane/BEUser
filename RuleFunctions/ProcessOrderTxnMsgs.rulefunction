@@ -1,0 +1,21 @@
+/**
+ * @description 
+ */
+void rulefunction RuleFunctions.ProcessOrderTxnMsgs {
+	attribute {
+		validity = ACTION;
+	}
+	scope {
+		
+		Events.OrderTxnEvent ordertxnevent;
+	}
+	body {
+		System.debugOut(" **** Executing Rule Function **** ");
+		
+		OrderTxn temptxn = Instance.createInstance("xslt://{{/Concepts/OrderTxn}}<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<xsl:stylesheet xmlns:xsl=\"http://www.w3.org/1999/XSL/Transform\" xmlns:ns=\"http://www.tibco.com/schemas/TestSchemas/OrderSchema.xsd\" version=\"2.0\"><xsl:param name=\"ordertxnevent\"/><xsl:template name=\"Function\" match=\"/\"><createObject><object><xsl:if test=\"$ordertxnevent/payload/ns:OrderTxn/ns:OrderID\"><OrderID><xsl:value-of select=\"$ordertxnevent/payload/ns:OrderTxn/ns:OrderID\"/></OrderID></xsl:if><xsl:if test=\"$ordertxnevent/payload/ns:OrderTxn/ns:CustID\"><CustID><xsl:value-of select=\"$ordertxnevent/payload/ns:OrderTxn/ns:CustID\"/></CustID></xsl:if><xsl:if test=\"$ordertxnevent/payload/ns:OrderTxn/ns:OrderAmount\"><OrderAmount><xsl:value-of select=\"$ordertxnevent/payload/ns:OrderTxn/ns:OrderAmount\"/></OrderAmount></xsl:if><xsl:if test=\"$ordertxnevent/payload/ns:OrderTxn/ns:OrderDateTime\"><OrderDateTime><xsl:value-of select=\"$ordertxnevent/payload/ns:OrderTxn/ns:OrderDateTime\"/></OrderDateTime></xsl:if><xsl:if test=\"$ordertxnevent/payload/ns:OrderTxn/ns:OrderPriority\"><OrderPriority><xsl:value-of select=\"$ordertxnevent/payload/ns:OrderTxn/ns:OrderPriority\"/></OrderPriority></xsl:if><xsl:if test=\"$ordertxnevent/payload/ns:OrderTxn/ns:OrderStatus\"><OrderStatus><xsl:value-of select=\"$ordertxnevent/payload/ns:OrderTxn/ns:OrderStatus\"/></OrderStatus></xsl:if><xsl:if test=\"$ordertxnevent/payload/ns:OrderTxn/ns:ShipToState\"><ShipToState><xsl:value-of select=\"$ordertxnevent/payload/ns:OrderTxn/ns:ShipToState\"/></ShipToState></xsl:if></object></createObject></xsl:template></xsl:stylesheet>");
+		
+		System.debugOut("*** Creating OrderTxn Instance ***"+Instance.serializeUsingDefaults(temptxn));
+		
+		
+	}
+}

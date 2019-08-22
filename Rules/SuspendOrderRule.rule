@@ -1,0 +1,22 @@
+/**
+ * @description 
+ * @author rsonwane-t430
+ */
+rule Rules.SuspendOrderRule {
+	attribute {
+		priority = 5;
+		forwardChain = true;
+	}
+	declare {
+		
+		Concepts.Order order;
+		Events.SuspendAccountEvent suspendaccountevent;
+	}
+	when {
+		order.CustID == suspendaccountevent.CustID;
+	}
+	then {
+		order.OrderStatus = "SUSPENDED";
+		System.debugOut("Suspend OrderID: "+order.OrderID);
+	}
+}

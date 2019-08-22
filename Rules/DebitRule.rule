@@ -1,0 +1,23 @@
+/**
+ * @description 
+ * @author rsonwane-t430
+ */
+rule Rules.DebitRule {
+	attribute {
+		priority = 5;
+		forwardChain = true;
+	}
+	declare {
+		
+		Concepts.Customer customer;
+	}
+	when {
+		Temporal.History.howMany(customer.DEBIT,
+		DateTime.getTimeInMillis(DateTime.now())-30000, 
+		DateTime.getTimeInMillis(DateTime.now()), true)> 1;
+	}
+	then {
+		customer.ACCOUNTSTATUS="SUSPENDED";
+		System.debugOut("*** WARNING! ACCOUNT: "+customer.ACCOUNTID+"*** SUSPENDE FRUAD SUSPECTED ***");
+	}
+}

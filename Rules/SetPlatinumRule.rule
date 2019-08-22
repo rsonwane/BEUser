@@ -1,0 +1,22 @@
+/**
+ * @description 
+ * @author rsonwane-t430
+ */
+rule Rules.SetPlatinumRule {
+	attribute {
+		priority = 5;
+		forwardChain = true;
+	}
+	declare {
+		
+		Concepts.Customer customer;
+	}
+	when {
+		customer.TOTALPOINTS >20000;
+		customer.ACCOUNTLEVEL !="PLATINUM";
+	}
+	then {
+		customer.ACCOUNTLEVEL = "PLATINUM";
+		System.debugOut("Customer Level: "+customer.ACCOUNTLEVEL);
+	}
+}

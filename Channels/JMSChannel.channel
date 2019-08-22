@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<channel:Channel xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:channel="http:///com/tibco/cep/designtime/core/model/service/channel" xmlns:designtime="http:///com/tibco/cep/designtime/core/model/designtime_ontology.ecore" namespace="/Channels/" folder="/Channels/" name="JMSChannel" description="" GUID="D03E4973-7E51-64C5-C453-6677A0AFA448" ownerProjectName="BEUser">
+  <driver configMethod="REFERENCE" reference="/SharedResources/JMSConnection.sharedjmscon" label="JMS" channel="/">
+    <destinations name="tralala" description="" GUID="08B970D9-EE72-2553-DECD-2A481655E9D7" ownerProjectName="BEUser" serializerDeserializerClass="com.tibco.cep.driver.jms.serializer.TextMessageSerializer" driverConfig="//@driver">
+      <properties>
+        <properties xsi:type="designtime:SimpleProperty" name="IncludeEventType" value="ON_DESERIALIZE"/>
+        <properties xsi:type="designtime:SimpleProperty" name="Queue" value="false"/>
+        <properties xsi:type="designtime:SimpleProperty" name="Name" value="ORDER.NEW"/>
+        <properties xsi:type="designtime:SimpleProperty" name="Selector" value=""/>
+        <properties xsi:type="designtime:SimpleProperty" name="DeliveryMode" value="2"/>
+        <properties xsi:type="designtime:SimpleProperty" name="AckMode" value="1"/>
+        <properties xsi:type="designtime:SimpleProperty" name="Priority" value="4"/>
+        <properties xsi:type="designtime:SimpleProperty" name="TTL" value="0"/>
+        <properties xsi:type="designtime:SimpleProperty" name="DurableSuscriberName" value="%%Deployment%%:%%EngineName%%:%%SessionName%%:%%ChannelURI%%:%%DestinationName%%"/>
+      </properties>
+    </destinations>
+    <driverType xsi:type="channel:DriverTypeInfo" driverTypeName="JMS"/>
+  </driver>
+</channel:Channel>

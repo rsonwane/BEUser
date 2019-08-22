@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<event:SimpleEvent xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:event="http:///com/tibco/cep/designtime/core/model/event" namespace="/Events/" folder="/Events/" name="OrderTxnEvent" description="" GUID="EE3038DF-F0FD-1EB1-A966-1D6CB1647199" ownerProjectName="BEUser" superEventPath="" payloadString="&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?>&#xA;&#xA;&lt;payload ref=&quot;pfx:OrderTxn&quot;/>" ttl="-1" ttlUnits="Seconds">
+  <namespaceEntries prefix="xsd" namespace="http://www.w3.org/2001/XMLSchema"/>
+  <namespaceEntries prefix="pfx" namespace="http://www.tibco.com/schemas/TestSchemas/OrderSchema.xsd"/>
+  <registryImportEntries location="SharedResources/OrderTxnSchema-v1.xsd" namespace="http://www.tibco.com/schemas/TestSchemas/OrderSchema.xsd"/>
+  <expiryAction name="OrderTxnEvent_expiryAction" ownerProjectName="BEUser" actionText="" conditionText="">
+    <symbols>
+      <symbolList idName="ordertxnevent" type="/Events/OrderTxnEvent"/>
+    </symbols>
+  </expiryAction>
+</event:SimpleEvent>

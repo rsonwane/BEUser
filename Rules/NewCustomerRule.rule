@@ -1,0 +1,34 @@
+/**
+ * @description 
+ * @author rsonwane-t430
+ */
+rule Rules.NewCustomerRule {
+	attribute {
+		priority = 5;
+		forwardChain = true;
+	}
+	declare {
+		
+		Concepts.OrderTxn ordertxn;
+	}
+	when {
+		
+	}
+	then {
+		
+		Customer cust = Instance.getByExtId(ordertxn.CustID);
+		if(cust == null){
+		cust = Instance.createInstance("xslt://{{/Concepts/Customer}}<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<xsl:stylesheet xmlns:xsl=\"http://www.w3.org/1999/XSL/Transform\" xmlns:xsd=\"http://www.w3.org/2001/XMLSchema\" version=\"1.0\" exclude-result-prefixes=\"xsl xsd\">\n    <xsl:output method=\"xml\"/>\n    <xsl:param name=\"ordertxn\"/>\n    <xsl:template name=\"Function\" match=\"/\">\n        <createObject>\n            <object>\n                <xsl:if test=\"$ordertxn/CustID\">\n                    <xsl:attribute name=\"extId\">\n                        <xsl:value-of select=\"$ordertxn/CustID\"/>\n                    </xsl:attribute>\n                </xsl:if>\n                <xsl:if test=\"$ordertxn/CustID\">\n                    <ACCOUNTID>\n                        <xsl:value-of select=\"$ordertxn/CustID\"/>\n                    </ACCOUNTID>\n                </xsl:if>\n                <ACCOUNTSTATUS>\n                    <xsl:value-of select=\"&quot;GOOD&quot;\"/>\n                </ACCOUNTSTATUS>\n                <ACCOUNTLEVEL>\n                    <xsl:value-of select=\"&quot;SILVER&quot;\"/>\n                </ACCOUNTLEVEL>\n                <TOTALPOINTS>\n                    <xsl:value-of select=\"xsd:long($ordertxn/OrderAmount)\"/>\n                </TOTALPOINTS>\n                <xsl:if test=\"$ordertxn/ShipToState\">\n                    <SHIPTOSTATE>\n                        <xsl:value-of select=\"$ordertxn/ShipToState\"/>\n                    </SHIPTOSTATE>\n                </xsl:if>\n            </object>\n        </createObject>\n    </xsl:template>\n</xsl:stylesheet>");
+		System.debugOut("**** New Customer Object Created with ID: " + cust.ACCOUNTID);
+		}
+		else{
+		System.debugOut(" *** Customer already exists with ID: " + cust.ACCOUNTID);
+		cust.TOTALPOINTS = cust.TOTALPOINTS + ordertxn.OrderAmount;
+		cust.DEBIT = ordertxn.OrderAmount;
+		cust.SHIPTOSTATE = ordertxn.ShipToState;
+		}
+		
+		System.debugOut("*** Updated Points for this Customer: " +cust.TOTALPOINTS);
+			
+	}
+}
