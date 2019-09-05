@@ -1,3 +1,1 @@
 python applicationsMgmt.py -t http://rsonwane-t430:8777/ -u admin -p admin addmachine -m LocalMachine -i 192.168.48.208 -o {"windows"} -b D:\MacysHome\be\5.3 –t D:\MacysHome\be\5.3\bin\be-engine.tra -u rsonwane -p July@2019 -s=22 -f D:\TEA_DeploymentPath
-createdeployment -d BEUser -c CI_CDTestProject\Deployments\TrackandTrace.cdd -e CI_CDTestProject\target\BEUser-1.0.0.ear
-createinstance -d BEUser -i Instance1 -u OrderTxnPU -m LocalMachine -p 8787 
